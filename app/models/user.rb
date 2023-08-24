@@ -3,12 +3,10 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes
 
-  validates_presence_of :name
-  validates :posts_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-
   after_create :recent_posts
 
-  def recent_posts
-    posts.order(created_at: :desc).limit(3)
+  # Method to get the 3 most recent posts for a user
+  def recent_posts(limit = 3)
+    posts.order(created_at: :desc).limit(limit)
   end
 end
