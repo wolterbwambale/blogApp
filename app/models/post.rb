@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :author, class_name: 'User', foreign_key: :author_id
-  has_many :comments, foreign_key: 'post_id'
-  has_many :likes, foreign_key: 'post_id'
+  has_many :comments
+  has_many :likes
 
   validates_presence_of :title
   validates_length_of :title, maximum: 250
@@ -17,6 +17,6 @@ class Post < ApplicationRecord
   private
 
   def update_user_post_count
-    author.increment!(:posts_counter) if author.present?
+    author&.increment!(:posts_counter)
   end
 end

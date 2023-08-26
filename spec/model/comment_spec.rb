@@ -1,17 +1,19 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# RSpec.describe Like, type: :model do
-#   describe '#update_likes_counter' do
-#     let(:user1) { create(:user) }
-#     let(:user2) { create(:user) }
-#     let(:post) { create(:post, author: user1, likes_counter: 1, comments_counter: 1) }
-#     let!(:like) { create(:like, post:, user: user2) }
+RSpec.describe Comment, type: :model do
+  subject(:user) { User.new(name: 'Tom', photo: 'https://example.com/tom.jpg', bio: 'Teacher from Mexico.', posts_counter: 0) }
+  let(:post) { Post.new(author_id: user.id, title: 'Sample Post', comments_counter: 0, likes_counter: 0) }
+  let(:comment) { Comment.new(author_id: user.id, post_id: post.id) }
 
-#     it 'increases the likes counter of the associated post' do
-#       expect do
-#         like.update_likes_counter
-#         post.reload
-#       end.to change(post, :likes_counter).by(1)
-#     end
-#   end
-# end
+  before { user.save! }
+  before { post.save! }
+  before { comment.save! }
+  it 'creating a like and not saving it will keep post comments counter as default' do
+    expect(post.comments_counter).to eq(0)
+  end
+
+  it 'saving or creating a new like will trigger update_post_comments_counter automatically' do
+    post.reload
+    expect(post.comments_counter).to eq(1)
+  end
+end
