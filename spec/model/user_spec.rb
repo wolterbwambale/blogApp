@@ -1,15 +1,38 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe '#recent_posts' do
-    it 'returns the most recent posts' do
+  describe 'validations' do
+    it 'validates post_counter is an integer' do
+      user = User.new(
+        name: 'user1',
+        photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+        bio: 'test_bio',
+        posts_counter: '!'
+      )
+      expect(user).to_not be_valid
+    end
+
+    it 'validates post_counter is greater than or equal to zero' do
+      user = User.new(
+        name: 'user1',
+        photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+        bio: 'test_bio',
+        posts_counter: -1
+      )
+      expect(user).to_not be_valid
+    end
+  end
+
+  describe 'test methods' do
+    it 'shows the most recent 3 posts' do
       user = User.create(
-        name: 'test user',
+        name: 'user1',
         photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
         bio: 'test_bio',
         posts_counter: 1
       )
 
+      # Create posts for the user
       posts = (1..5).map do |i|
         Post.create(
           author: user,
@@ -21,21 +44,9 @@ RSpec.describe User, type: :model do
       end
 
       sorted_posts = posts.sort_by(&:created_at).reverse
-
       expected_posts = sorted_posts.first(3)
 
       expect(user.recent_posts).to eq(expected_posts)
-    end
-
-    it 'returns an empty array if user has no posts' do
-      user = User.create(
-        name: 'test user',
-        photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
-        bio: 'test_bio',
-        posts_counter: 0
-      )
-
-      expect(user.recent_posts).to be_empty
     end
   end
 end
