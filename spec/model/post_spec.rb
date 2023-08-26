@@ -55,7 +55,6 @@ RSpec.describe Post, type: :model do
       expect { post.send(:update_user_post_count) }.to change { user.posts_counter }.by(1)
     end
 
-
     it 'get recent 5 comments' do
       expect(post.recent_comments).to eq(post.comments.last(5))
       puts post.comments.last(5)
