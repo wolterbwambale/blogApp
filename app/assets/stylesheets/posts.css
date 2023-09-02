@@ -1,0 +1,38 @@
+a {
+  text-decoration: none;
+}
+
+#user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#user-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+#user-details {
+  font-size: 18px;
+}
+
+.post-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.comments {
+  margin-top: 10px;
+}
+
+.comment {
+  margin-bottom: 10px;
+}
+
+#view-p a {
+  color: #007bff;
+}
