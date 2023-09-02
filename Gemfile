@@ -16,7 +16,6 @@ gem 'sprockets-rails'
 
 gem 'will_paginate', '~> 3.3'
 
-
 # Use sqlite3 as the database for Active Record
 gem 'activerecord-postgis-adapter'
 gem 'pg'
