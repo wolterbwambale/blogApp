@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @current = current_user
     @post = Post.find(params[:post_id])
     @new_comment = @post.comments.build(comment_parameters)
-    @new_comment.user = @current # Associate the comment with the current user
+    @new_comment.user = @current 
 
     respond_to do |format|
       format.html do
