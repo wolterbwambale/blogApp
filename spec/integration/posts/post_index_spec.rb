@@ -30,16 +30,15 @@ RSpec.describe 'post index view page', type: :system do
     before(:example) do
       visit user_posts_path(user1)
     end
-
+    it 'displays the user\'s username' do
+      expect(page).to have_content(user1.name)
+    end
+    
     it 'displays the user\'s profile picture' do
       expect(page).to have_selector("img[src='#{user1.photo}']")
     end
 
-    it 'displays the user\'s username' do
-      expect(page).to have_content(user1.name)
-    end
-
-    it 'displays the number of posts the user has written' do
+       it 'displays the number of posts the user has written' do
       expect(page).to have_content("Number of posts: #{user1.posts_counter}")
     end
 
