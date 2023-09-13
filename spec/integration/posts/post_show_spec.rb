@@ -38,15 +38,17 @@ RSpec.describe 'post index view page', type: :system do
       expect(page).to have_content("Author: #{user1.name}")
     end
 
+    it 'displays the number of likes' do
+      puts "DEBUG: Likes count: #{post1.likes_counter}"
+      expect(page).to have_content("Likes: #{post1.likes_counter}")
+    end
+
     it 'displays the number of comments' do
       puts "DEBUG: Comments count: #{post1.comments_counter}"
       expect(page).to have_content("Comments: #{post1.comments_counter}")
     end
 
-    it 'displays the number of likes' do
-      puts "DEBUG: Likes count: #{post1.likes_counter}"
-      expect(page).to have_content("Likes: #{post1.likes_counter}")
-    end
+ 
 
     it 'displays the post body' do
       expect(page).to have_content(post1.text)
