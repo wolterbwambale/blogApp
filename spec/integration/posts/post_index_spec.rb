@@ -51,8 +51,6 @@ RSpec.describe 'post index view page', type: :system do
       expect(page).to have_content(post2.text)
     end
 
-
-
     it 'displays the number of comments a post has' do
       expect(page).to have_content("Comments #{post1.comments_counter}")
     end
