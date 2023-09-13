@@ -38,7 +38,7 @@ RSpec.describe 'post index view page', type: :system do
       expect(page).to have_selector("img[src='#{user1.photo}']")
     end
 
-       it 'displays the number of posts the user has written' do
+    it 'displays the number of posts the user has written' do
       expect(page).to have_content("Number of posts: #{user1.posts_counter}")
     end
     it 'displays the first comments on a post' do
@@ -51,7 +51,7 @@ RSpec.describe 'post index view page', type: :system do
       expect(page).to have_content(post2.text)
     end
 
- 
+
 
     it 'displays the number of comments a post has' do
       expect(page).to have_content("Comments #{post1.comments_counter}")

@@ -58,7 +58,7 @@ RSpec.describe 'post index view page', type: :system do
       expect(page).to have_content(post1.text)
     end
 
- 
+
 
     it 'displays the comment left by each commenter' do
       expect(page).to have_content(comment1.text)
