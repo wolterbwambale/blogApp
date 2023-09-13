@@ -102,6 +102,13 @@ rails server
 - Twitter: [@twitterhandle](https://twitter.com/BwambaleWolter)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/bwambale-benny-wolter/)
 
+👤 : **Habtamu**
+
+- GitHub: [@benawi](https://github.com/benawi)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/habtamu-alemayehu-b90367101/
+)
+
+
 ## 🔭 Future Features <a name="future-features"></a>
 
 - Add more features
