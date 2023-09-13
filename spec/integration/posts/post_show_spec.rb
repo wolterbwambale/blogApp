@@ -53,7 +53,6 @@ RSpec.describe 'post index view page', type: :system do
     end
 
     it 'displays the username of each commenter' do
-      puts "DEBUG: Commenter names: #{comment1.user.name}, #{comment2.user.name}, #{comment3.user.name}"
       expect(page).to have_content(comment1.user.name)
       expect(page).to have_content(comment2.user.name)
       expect(page).to have_content(comment3.user.name)
