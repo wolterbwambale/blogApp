@@ -48,17 +48,17 @@ RSpec.describe 'post index view page', type: :system do
       expect(page).to have_content("Comments: #{post1.comments_counter}")
     end
 
- 
-
-    it 'displays the post body' do
-      expect(page).to have_content(post1.text)
-    end
-
     it 'displays the username of each commenter' do
       expect(page).to have_content(comment1.user.name)
       expect(page).to have_content(comment2.user.name)
       expect(page).to have_content(comment3.user.name)
     end
+
+    it 'displays the post body' do
+      expect(page).to have_content(post1.text)
+    end
+
+ 
 
     it 'displays the comment left by each commenter' do
       expect(page).to have_content(comment1.text)
