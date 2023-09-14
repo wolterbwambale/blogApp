@@ -5,5 +5,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-
+  def update_allowed_parameters
+    
+  end
 end
