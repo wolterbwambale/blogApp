@@ -3,12 +3,12 @@ body {
   padding: 0;
 }
 
-.nav{
+.nav {
   display: flex;
   color: #007bff;
-   gap: 20px;
-   justify-content: right;
-   font-size: 24px;
+  gap: 20px;
+  justify-content: right;
+  font-size: 24px;
 }
 
 .container {
