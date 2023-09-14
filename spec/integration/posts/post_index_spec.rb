@@ -52,12 +52,28 @@ RSpec.describe 'post index view page', type: :system do
     end
 
     it 'displays the number of comments a post has' do
-      expect(page).to have_content("Comments #{post1.comments_counter}")
+      # Visit the user's posts page
+      visit user_posts_path(user1)
+
+      expect(page).to have_content(post1.title)
+      expect(page).to have_content(post1.text)
+
+      # Check the comments count in the updated format
+      expect(page).to have_content("#{post1.comments_counter} Comments")
     end
 
+
     it 'displays the number of likes a post has' do
-      expect(page).to have_content("Likes: #{post1.likes_counter}")
+      # Visit the user's posts page
+      visit user_posts_path(user1)
+
+      # Check for the post's title and content
+      expect(page).to have_content(post1.title)
+      expect(page).to have_content(post1.text)
+
+      expect(page).to have_content("#{post1.likes_counter} Likes")
     end
+
 
     it 'redirects to the post show page when a post is clicked' do
       click_link post1.title

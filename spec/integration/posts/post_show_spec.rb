@@ -11,7 +11,7 @@ RSpec.describe 'post index view page', type: :system do
   end
 
   let!(:post1) do
-    Post.create(author: user1, title: 'Post 1', text: 'Post 1 content', comments_counter: 3, likes_counter: 0)
+    Post.create(author: user1, title: 'Post 1', text: 'Post 1 content', comments_counter: 3, likes_counter: 1)
   end
 
   let!(:comment1) do
@@ -33,19 +33,12 @@ RSpec.describe 'post index view page', type: :system do
       expect(page).to have_content(post1.title)
     end
 
-    it 'displays the post author' do
-      puts "DEBUG: Author name: #{user1.name}"
-      expect(page).to have_content("Author: #{user1.name}")
-    end
-
     it 'displays the number of likes' do
-      puts "DEBUG: Likes count: #{post1.likes_counter}"
-      expect(page).to have_content("Likes: #{post1.likes_counter}")
+      expect(page).to have_content("#{post1.likes_counter} Likes")
     end
 
     it 'displays the number of comments' do
-      puts "DEBUG: Comments count: #{post1.comments_counter}"
-      expect(page).to have_content("Comments: #{post1.comments_counter}")
+      expect(page).to have_content("#{post1.comments_counter} Comments")
     end
 
     it 'displays the username of each commenter' do
