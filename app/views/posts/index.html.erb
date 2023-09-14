@@ -1,13 +1,26 @@
-<%= render @user%>
-<% @posts.each do |post| %>
-    <a href ="<%= user_post_path(@user, post)%>"><%= render post%></a>
-    <%= "no comments for this post" if post.comments.empty?%>
-    <div class="comments">
-    <% post.recent_comments.each do |comment|%>
-        <%=render comment%>
-    <% end %>
-    </div>
-    <p id="view-post"><%= link_to 'View Post', user_post_path(@user, post) %></p>
+<% if @user.present? %>
+  <%= render @user %>
+<% else %>
+  <p>User not found.</p>
 <% end %>
-
-<%= will_paginate @posts %>
+<% if @posts.present? %>
+  <% @posts.each do |post| %>
+    <a href="<%= user_post_path(@user, post) %>"><%= render post %></a>
+    <% if post.comments.empty? %>
+      <p>No comments for this post</p>
+    <% else %>
+      <div class="comments">
+        <% post.recent_comments.each do |comment| %>
+          <%= render comment %>
+        <% end %>
+      </div>
+    <% end %>
+    <% if post.comments.present? %>
+      <%= link_to 'View Comments', user_post_path(@user, post, anchor: 'comments') %>
+    <% end %>
+    <p id="view-post"><%= link_to 'View Post', user_post_path(@user, post) %></p>
+  <% end %>
+  <%= will_paginate @posts %>
+<% else %>
+  <p>No posts found.</p>
+<% end %>
